@@ -1,3 +1,4 @@
+
 <script setup>
 import { useInstrumentStore } from '@/stores/instrumentStore'
 const store = useInstrumentStore()
@@ -149,3 +150,4 @@ const getVariationClass = (value) => {
     </template>
   </tr>
 </template>
+

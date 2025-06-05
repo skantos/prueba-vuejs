@@ -97,12 +97,12 @@ export const useInstrumentStore = defineStore('instrumentStore', {
       this.selectedHistory = this.historiales[code]?.data || null
       this.selectedInfo = this.getByCode(code) || null
     },
-    
+
     setSelectedIndex(index) {
       if (this.availableIndices.includes(index)) {
         this.selectedIndex = index
-        this.searchTerm = '' 
-        
+        this.searchTerm = ''
+
         if (!this.indexData[index]) {
           if (index === 'IPSA') {
             this.indexData[index] = {
@@ -116,9 +116,14 @@ export const useInstrumentStore = defineStore('instrumentStore', {
             }
           }
         }
+
+        this.selectedResumen = this.resumenes[index]?.data || null
+        this.selectedHistory = this.historiales[index]?.data || null
+        this.selectedInfo = this.indexData[index]?.info || null
+        this.selectedInstrument = index
       }
     },
-    
+
     clearSearch() {
       this.searchTerm = ''
     }

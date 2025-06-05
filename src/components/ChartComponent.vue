@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref, computed, onMounted, watch, onBeforeUnmount } from 'vue'
 import { useInstrumentStore } from '@/stores/instrumentStore'
@@ -35,45 +36,44 @@ const currentRangeLabel = computed(() => {
 })
 
 const filteredChartData = computed(() => {
-  if (!store.selectedIndex || !store.historiales[store.selectedIndex]?.data?.chart) return []
+  const instrument = store.selectedInstrument
+  if (!instrument || !store.historiales[instrument]?.data?.chart) return []
   
-  const allData = store.historiales[store.selectedIndex].data.chart
+  const allData = store.historiales[instrument].data.chart
   const now = new Date()
-  
+
   switch(activeTimeFrame.value) {
     case '1D':
-      return allData.filter(item => {
-        const itemDate = new Date(item.datetimeLastPrice)
-        return itemDate.toDateString() === now.toDateString()
-      })
+      return allData.filter(item => new Date(item.datetimeLastPrice).toDateString() === now.toDateString())
     case '1S':
-      const oneWeekAgo = new Date()
+      const oneWeekAgo = new Date(now)
       oneWeekAgo.setDate(now.getDate() - 7)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= oneWeekAgo)
     case '1M':
-      const oneMonthAgo = new Date()
+      const oneMonthAgo = new Date(now)
       oneMonthAgo.setMonth(now.getMonth() - 1)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= oneMonthAgo)
     case '3M':
-      const threeMonthsAgo = new Date()
+      const threeMonthsAgo = new Date(now)
       threeMonthsAgo.setMonth(now.getMonth() - 3)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= threeMonthsAgo)
     case '6M':
-      const sixMonthsAgo = new Date()
+      const sixMonthsAgo = new Date(now)
       sixMonthsAgo.setMonth(now.getMonth() - 6)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= sixMonthsAgo)
     case '1A':
-      const oneYearAgo = new Date()
+      const oneYearAgo = new Date(now)
       oneYearAgo.setFullYear(now.getFullYear() - 1)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= oneYearAgo)
     case '5A':
-      const fiveYearsAgo = new Date()
+      const fiveYearsAgo = new Date(now)
       fiveYearsAgo.setFullYear(now.getFullYear() - 5)
       return allData.filter(item => new Date(item.datetimeLastPrice) >= fiveYearsAgo)
     default:
       return allData
   }
 })
+
 
 const initChart = () => {
   if (chartInstance) {
@@ -276,3 +276,4 @@ onBeforeUnmount(() => {
     border-radius: 2px;
   }
 </style>
+
