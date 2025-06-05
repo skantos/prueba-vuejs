@@ -144,7 +144,7 @@ const showNoDataMessage = computed(() => {
             </template>
           </tr>
         </thead>
-        <tbody class="[&>tr:hover]:bg-gray-100">
+        <tbody class="">
           <InstrumentItemComponent
             v-for="(_, index) in Math.max(leftInstruments.length, rightInstruments.length)"
             :key="index"

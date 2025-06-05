@@ -18,10 +18,14 @@ const formatNumber = (value) => {
   }).format(value)
 }
 
-const formatPercentage = (value) => {
-  const fixedValue = Number(value).toFixed(2)
-  return `${fixedValue > 0 ? '+' : ''}${fixedValue}%`
+function formatPercentage(value) {
+  if (value === null || value === undefined || isNaN(value)) {
+    return '0.00%'
+  }
+  const sign = value >= 0 ? '+' : ''
+  return `${sign}${value.toFixed(2)}%`
 }
+
 
 const formatMillions = (value) => {
   if (!value) return '-'
