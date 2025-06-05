@@ -52,3 +52,15 @@ Se utilizan **Vitest** y **Vue Test Utils** para validar el comportamiento indiv
 
 ```bash
 npm install
+```
+
+## Ejecutar Pruebas
+
+```bash
+ npm run test:unit
+```
+
+## Recursos
+
+-Servicios de datos: disponibles en el archivo .zip entregado con la prueba (ubicados en la carpeta data).
+-Frameworks y herramientas: Vue.js, Pinia, Vite, Vitest, Vue Test Utils, jsdom.
