@@ -1,4 +1,3 @@
-@import './base.css';
 @import "tailwindcss";
 
 :root {
@@ -18,7 +17,7 @@
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 90vw;
   min-height: 100vh;
 }
 
@@ -35,13 +34,12 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 8px;
+thead {
   text-align: left;
   border-bottom: 1px solid #333;
 }
 
-th {
+thead {
   font-weight: 600;
   color: #999;
 }

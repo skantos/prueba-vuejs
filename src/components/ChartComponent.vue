@@ -189,7 +189,7 @@ onBeforeUnmount(() => {
 
 
 <template>
-  <div class="chart-component bg-card-bg border border-border-color rounded-lg p-4 mb-4">
+  <div class="chart-component p-4 mb-4">
     <div class="flex justify-between items-center mb-4">
       <h3 class="font-semibold">Histórico {{ store.selectedIndex }}</h3>
       <div class="text-sm text-gray-400">
@@ -251,7 +251,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
   .chart-component {
-    background-color: #1f1f1f;
+    background-color: #121212;
     border-color: #3a3a3a;
   }
 
